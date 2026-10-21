@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon panier</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-5.0.2-dist/css/bootstrap.min.css' %}">
+</head>
+<body>
+    <header class="header">
+        <h1>Mon panier</h1>
+        <a href="{% url 'products:list' %}">Continuer les achats</a>
+    </header>
+
+
+    <main class="conteneur">
+        {% if messages %}
+            {% for message in messages %}
+             <p class="message">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+
+
+        {% for ligne in lignes %}
+        <article class="carte ligne-panier">
+            <h2>{{ ligne.product.name }}</h2>
+
+            <p>Prix unitaire HT : {{ ligne.product.prix }} FCFA</p>
+            <p>Prix unitaire TTC : {{ ligne.product.prix_ttc|floatformat:2 }} FCFA</p>
+
+
+            <form action="{% url 'products:modifier_quantite_panier' ligne.product.pk %}" method="post">
+                {% csrf_token %}
+
+                <label for="q-{{ ligne.product.pk }}">Quantite</label>
+                <input id="q-{{ ligne.product.pk }}" type="number" min="1" max="{{ ligne.product.stock }}" value="{{ ligne.quantite }}" required>
+
+                <button type="submit">Mettre a jour </button>
+            </form>
+
+
+
+
+            <p>Sous-total HT: {{ ligne.montant_ht|floatformat:2 }} FCFA</p>
+            <p>TVA : {{ ligne.montant_tva|floatformat:2 }} FCFA</p>
+            <p><strong>Sous-total TTC:{{ ligne.montant_ttc|floatformat:2 }} FCFA</strong></p>
+
+            <form action="{% url 'products:retirer_du_panier' ligne.product.pk %}" method="post">
+                {% csrf_token %}
+
+                <button class="danger" type="submit">Retirer</button>
+            </form>
+        </article>
+        {% empty %}
+        <p>Ton panier est vide .</p>
+        {% endfor %}
+
+        {% if lignes %}
+         <section class="carte total-panier">
+             <h2>Recapitulatif</h2>
+             <a href="{% url 'products:commander' %}">
+                Passer la commande
+             </a>
+             <p>Toatl HT : {{ total_ht |floatformat:2 }} FCFA</p>
+             <p>Total TVA : {{ total_tva | floatformat:2 }} FCFA</p>
+             <p class="prix">
+                 Toatl TTC : {{ total_ttc|floatformat:2 }} FCFA
+             </p>
+          </section>
+        {% endif %}
+    </main>
+</body>
+</html>

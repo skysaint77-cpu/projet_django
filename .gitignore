@@ -1,0 +1,18 @@
+# Environnementt virtuel (Python)
+venv/
+env/
+ENV/
+.venv/
+
+# Fichier compiles Python 
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+db.sqlite3
+
+.env
+
+staticfiles/
+media/

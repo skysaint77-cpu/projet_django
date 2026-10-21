@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>elete a Product</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-5.0.2-dist/css/bootstrap.min.css' %}">
+</head>
+<body>
+    <main class="fom-page">
+        <h1>Delete a product</h1>
+
+        <p>
+            Do you wants to delete this product ? 
+            <strong>{{ product.name }}</strong>
+        </p>
+
+        <form action="" method="post">
+            {% csrf_token %}
+            <button type="submit" class="danger">Yes, delete</button>
+            <a href="{% url 'products:list' %}">Cancel</a>
+        </form>
+    </main>
+</body>
+</html>

@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma boutique artisanale</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap-5.0.2-dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header class="header">
+        <h1>Ma boutique artisanale</h1>
+        <p>Decouvrez nos creation artisanale</p>
+    </header>
+
+    <main class="conteneur">
+        <form method="get" class="recherche">
+            <input type="search" name="q" value="{{ recherche }}" placeholder="search for a product..." aria-label="search for a product">
+
+            <button type="submit">Recherche</button>
+        </form>
+
+
+        <div class="actions">
+            <!-- <a class="bouton" href="{% url 'products:add' %}">Add a product </a> -->
+            <!-- <a href="/admin/">Administration</a> -->
+        </div>
+
+        <section class="catalogue">
+            {% for product in products %}
+            <article class="carte">
+                {% if product.photo %}
+                <img src="{{ product.photo.url }}" alt="{{ product.name }}" width="100" height="100" loading="lazy" decoding="async" >
+                {% endif %}
+
+
+
+                <div class="carte-contenu">
+                    <h2>{{ product.name }}</h2>
+                    <p>{{ product.description|truncatewords:18 }}</p>
+                    <p class="prix">{{ product.prix }} FCFA</p>
+                    <p>Stock : {{ product.stock }}</p>
+
+                    <div class="actions">
+                        <!-- <a href="{% url 'products:update' product.pk %}">Add</a> -->
+                        <!-- <a href="{% url 'products:delete' product.pk %}">Delete</a> -->
+                        <a href="{% url 'products:detail' product.pk %}">Detail</a>
+                    </div>
+                </div>
+            </article>
+
+            {% empty %}
+            <p>No product found</p>
+            {% endfor %}
+        </section>
+    </main>
+
+
+    <footer class="footer">
+        <p>@ Ma boutique artisanale</p>
+    </footer>
+</body>
+</html>

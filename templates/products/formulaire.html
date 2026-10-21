@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ titre }}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-5.0.2-dist/css/bootstrap.min.css' %}">
+</head>
+<body>
+    <main class="form-page">
+        <h1>{{ titre }}</h1>
+
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            {% if formulaire.non_field_errors %}
+                <div class="erreur">{{ formulaire.non_field_errors }}</div>
+            {% endif %}
+
+            {% for field in formulaire %}
+            <div class="champ">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+
+                {{ field }}
+
+             {% if field.help_text %}
+                 <small>{{ field.help_text }}</small>
+              {% endif %}
+
+             {% for error in field.errors %}
+                 <p class="erreur">{{ error }}</p>
+             {% endfor %}
+            </div>
+            {% endfor %}
+
+            <button type="submit">Enregistrer</button>
+            <a href="{% url 'products:list' %}">Cancel</a>
+        </form>
+    </main>
+</body>
+</html>

@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commande confirmere</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap-5.0.2-dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <main class="conteneur">
+        <h1>Commande confirmee !</h1>
+
+        <p>
+            Merci {{ commande.nom_client }}.
+            Ta commande a bien ete enregistree.
+        </p>
+
+        <p>
+            Reference :
+            <strong>{{ commande.references }}</strong>
+        </p>
+
+        <h2>Recapitulatif</h2>
+
+        {% for ligne in commande.lignes.all %}
+        <article class="carte">
+            <h3>{{ ligne.product_name }}</h3>
+            <p>Quantite : {{ ligne.quantite }}</p>
+            <p>
+                Sous-total TTC:
+                {{ ligne.montant_ttc|floatformat:2 }}FCFA
+            </p>
+        </article>
+        {% endfor %}
+
+        <p>
+            Total HT:
+            {{ commande.total_ht|floatformat:2 }} FCFA
+        </p>
+
+        <p>
+            TVA :
+            {{ commande.total_tva|floatformat:2 }} FCFA
+        </p>
+
+        <h2>
+            Total a payer a la livraison :
+            {{ commande.total_ttc|floatformat:2 }} FCFA
+        </h2>
+
+        <a href="{% url 'products:list' %}">
+            Retour au catalogue
+        </a>
+    </main>
+</body>
+</html>

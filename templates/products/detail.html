@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.name }} | Boutique artisanal</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-5.0.2-dist/css/bootstrap.min.css' %}">
+</head>
+<body>
+    <header class="header">
+        <h1>{{ product.name }}</h1>
+        <p>Fiche detailler du product</p>
+    </header>
+
+    <main class="product-detail">
+        {% if product.photo %}
+        <img class="photo-detail" src="{{ product.photo.url }}" alt="{{ product.name }}">
+        {% endif %}
+
+
+        <section>
+            <h2>{{ product.name }} </h2>
+            <p>{{ product.description | linebreaksbr }}</p>
+
+            <p>Prix HT:
+                <strong>{{ product.prix | floatformat:2 }} FCFA</strong>
+            </p>
+
+            <p>TVA : {{ product.tva }} %</p>
+
+            <p class="prix">
+                Prix TTC:
+                {{ product.prix_ttc|floatformat:2 }} FCFA
+            </p>
+
+            <p>
+                {% if product.stock > 0 %}
+
+                <form action="{% url 'products:ajouter_au_panier' product.pk %}" method="post">
+                    {% csrf_token %}
+                    <label for="quantite">Quantite</label>
+                    <input type="number" id="quantite" name="quantite" min="1" max="{{ product.stock }}" required>
+                    <button type="submit">Ajouter au panier</button>
+                </form>
+                   Disponible - {{ product.stock }} en stock
+                {% else %}
+                    Rupture de stock
+                    ce prduit es actuellement indisponible
+                {% endif %} 
+
+                <p><a href="{% url 'products:panier' %}">voir mon panier</a></p>
+            </p>
+
+            <a href="{% url 'products:list' %}">
+                Retour au Catalogue
+            </a>
+        </section>
+    </main>
+</body>
+</html>

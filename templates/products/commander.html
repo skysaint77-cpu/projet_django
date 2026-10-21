@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> finaliser ma commande</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap-5.0.2-dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="conteneur">
+        <h1>Finaliser ma commande</h1>
+
+        <h2>Recapitulatif</h2>
+        <p>Nombre d'articles : {{ panier|length }}</p>
+        <p>
+            Paiement a la livraison : aucun paiement en ligne n'est demander.
+        </p>
+
+        <form method="post">
+            {% csrf_token %}
+
+            {{ form.non_field_errors }}
+
+            {% for field in form %}
+              <div class="champ">
+                {{ field.label_tag }}
+                {{ field }}
+                {{ field.errors }}
+              </div>
+            {% endfor %}
+
+            <button type="submit">
+                Confirmer la commande
+            </button>
+        </form>
+
+        <p>
+            <a href="{% url 'products:panier' %}">
+                Retour au panier
+            </a>
+        </p>
+    </div>
+</body>
+</html>
