@@ -50,10 +50,10 @@
                     ce prduit es actuellement indisponible
                 {% endif %} 
 
-                <p><a href="{% url 'products:panier' %}">voir mon panier</a></p>
+                <p><a href="{% url 'products:panier' %}" class="voir">voir mon panier</a></p>
             </p>
 
-            <a href="{% url 'products:list' %}">
+            <a href="{% url 'products:list' %}" class="retour">
                 Retour au Catalogue
             </a>
         </section>

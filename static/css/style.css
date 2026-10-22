@@ -42,15 +42,23 @@ input,textarea{
 
 button,
 .button{
-    padding: 0.7rem;
+    padding: 10px;
     background: #166534;
     color: white;
-    border: 0;
-    border-radius: 6px;
+    border: 1px solid white;
+    border-radius: 25px;
     cursor: pointer;
     text-decoration: none;
+    margin-top: 10px;
 }
 
+.ctn{
+    text-decoration: none;
+    color: white;
+}
+.ctn:hover{
+    color: white;
+}
 .catalogue{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px),1fr));
@@ -170,6 +178,23 @@ button,
     border-radius: 6px;
 }
 
+.voir{
+    text-decoration: none;
+    color: rgb(104, 229, 104);
+    margin: auto;
+}
+
+.voir:hover{
+    color: rgb(133, 240, 133);
+}
+
+.retour{
+    text-decoration: none;
+    color: #e16565;
+}
+.retour:hover{
+    color: #e16565;
+}
 
 @media(max-width: 520px){
     .ligne-panier form{
