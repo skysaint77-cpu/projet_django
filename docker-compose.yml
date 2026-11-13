@@ -1,0 +1,22 @@
+services:
+   db:
+    image: postgres:17
+
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_DB: boutique_db
+      POSTGRES_USER: boutique_user
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U boutique_user -d boutique_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      
+volumes:
+ postgres_data:

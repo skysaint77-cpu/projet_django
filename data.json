@@ -1,0 +1,500 @@
+[
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$P9zFKIygZyWrafHGdCIKRK$0pZWUv0PiMoupPvtfWRnJffUcbFMQ+7dhLZ8VAGOVeQ=",
+    "last_login": "2026-10-21T18:37:20.104Z",
+    "is_superuser": true,
+    "username": "plug",
+    "first_name": "",
+    "last_name": "",
+    "email": "plug@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-10-17T21:27:00.508Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "products.products",
+  "pk": 2,
+  "fields": {
+    "name": "Vases",
+    "description": "Collections des vases artisanaux.",
+    "prix": "8000.00",
+    "stock": 1,
+    "tva": "19.25",
+    "photo": "products/OIP_1.webp",
+    "actif": true,
+    "date_creation": "2026-10-18"
+  }
+},
+{
+  "model": "products.products",
+  "pk": 3,
+  "fields": {
+    "name": "Alimentaire",
+    "description": "faites a base des plantes artisanaux",
+    "prix": "9000.00",
+    "stock": 5,
+    "tva": "19.25",
+    "photo": "products/OIP_10.webp",
+    "actif": true,
+    "date_creation": "2026-10-18"
+  }
+},
+{
+  "model": "products.products",
+  "pk": 4,
+  "fields": {
+    "name": "Panier",
+    "description": "faites a la main",
+    "prix": "6000.00",
+    "stock": 12,
+    "tva": "19.25",
+    "photo": "products/télécharger.webp",
+    "actif": true,
+    "date_creation": "2026-10-18"
+  }
+},
+{
+  "model": "products.products",
+  "pk": 5,
+  "fields": {
+    "name": "Vase",
+    "description": "faites a la main",
+    "prix": "5000.00",
+    "stock": 5,
+    "tva": "19.25",
+    "photo": "products/OIP_8.webp",
+    "actif": true,
+    "date_creation": "2026-10-18"
+  }
+},
+{
+  "model": "products.products",
+  "pk": 6,
+  "fields": {
+    "name": "Chaussure",
+    "description": "faites a la main",
+    "prix": "7000.00",
+    "stock": 10,
+    "tva": "19.25",
+    "photo": "products/OIP_5.webp",
+    "actif": true,
+    "date_creation": "2026-10-19"
+  }
+},
+{
+  "model": "products.products",
+  "pk": 7,
+  "fields": {
+    "name": "Sac",
+    "description": "faite a la main",
+    "prix": "3000.00",
+    "stock": 4,
+    "tva": "19.25",
+    "photo": "products/OIP_19.webp",
+    "actif": true,
+    "date_creation": "2026-10-21"
+  }
+},
+{
+  "model": "products.commande",
+  "pk": 1,
+  "fields": {
+    "references": "55f87334-a30c-4e24-ab79-581f65f9ee26",
+    "nom_client": "jacuques",
+    "telephone": "680009876",
+    "adress": "Yassa",
+    "ville": "Douala",
+    "notes": "",
+    "statut": "confirmee",
+    "total_ht": "129000.00",
+    "total_tva": "24832.50",
+    "total_ttc": "153832.50",
+    "date_creation": "2026-10-19"
+  }
+},
+{
+  "model": "products.commande",
+  "pk": 2,
+  "fields": {
+    "references": "8795c001-6e17-492a-84a0-4718b080724d",
+    "nom_client": "willy",
+    "telephone": "670300098",
+    "adress": "Nyalla",
+    "ville": "Douala",
+    "notes": "",
+    "statut": "confirmee",
+    "total_ht": "9000.00",
+    "total_tva": "1732.50",
+    "total_ttc": "10732.50",
+    "date_creation": "2026-10-21"
+  }
+},
+{
+  "model": "products.lignecommande",
+  "pk": 1,
+  "fields": {
+    "commande": 1,
+    "product": 2,
+    "product_name": "shampoing",
+    "quantite": 7,
+    "prix_unitaire_ht": "8000.00",
+    "taux_tva": "19.25",
+    "montant_ht": "56000.00",
+    "montant_tva": "10780.00",
+    "montant_ttc": "66780.00"
+  }
+},
+{
+  "model": "products.lignecommande",
+  "pk": 2,
+  "fields": {
+    "commande": 1,
+    "product": 4,
+    "product_name": "Panier Artisanal",
+    "quantite": 3,
+    "prix_unitaire_ht": "6000.00",
+    "taux_tva": "19.25",
+    "montant_ht": "18000.00",
+    "montant_tva": "3465.00",
+    "montant_ttc": "21465.00"
+  }
+},
+{
+  "model": "products.lignecommande",
+  "pk": 3,
+  "fields": {
+    "commande": 1,
+    "product": 5,
+    "product_name": "Vase artisanal",
+    "quantite": 2,
+    "prix_unitaire_ht": "5000.00",
+    "taux_tva": "19.25",
+    "montant_ht": "10000.00",
+    "montant_tva": "1925.00",
+    "montant_ttc": "11925.00"
+  }
+},
+{
+  "model": "products.lignecommande",
+  "pk": 4,
+  "fields": {
+    "commande": 1,
+    "product": 3,
+    "product_name": "creme",
+    "quantite": 5,
+    "prix_unitaire_ht": "9000.00",
+    "taux_tva": "19.25",
+    "montant_ht": "45000.00",
+    "montant_tva": "8662.50",
+    "montant_ttc": "53662.50"
+  }
+},
+{
+  "model": "products.lignecommande",
+  "pk": 5,
+  "fields": {
+    "commande": 2,
+    "product": 7,
+    "product_name": "bracelet",
+    "quantite": 3,
+    "prix_unitaire_ht": "3000.00",
+    "taux_tva": "19.25",
+    "montant_ht": "9000.00",
+    "montant_tva": "1732.50",
+    "montant_ttc": "10732.50"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2026-10-17T21:29:00.200Z",
+    "user": [
+      "plug"
+    ],
+    "content_type": [
+      "products",
+      "products"
+    ],
+    "object_id": "1",
+    "object_repr": "Airnike",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2026-10-21T18:38:46.689Z",
+    "user": [
+      "plug"
+    ],
+    "content_type": [
+      "products",
+      "products"
+    ],
+    "object_id": "7",
+    "object_repr": "bracelet",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2026-10-22T14:20:00.599Z",
+    "user": [
+      "plug"
+    ],
+    "content_type": [
+      "products",
+      "products"
+    ],
+    "object_id": "6",
+    "object_repr": "Chaussure artisanal",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Photo\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2026-10-22T14:24:11.668Z",
+    "user": [
+      "plug"
+    ],
+    "content_type": [
+      "products",
+      "products"
+    ],
+    "object_id": "4",
+    "object_repr": "Panier Artisanal",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Photo\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2026-10-22T14:25:54.969Z",
+    "user": [
+      "plug"
+    ],
+    "content_type": [
+      "products",
+      "products"
+    ],
+    "object_id": "4",
+    "object_repr": "Panier Artisanal",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Photo\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2026-10-22T14:29:36.946Z",
+    "user": [
+      "plug"
+    ],
+    "content_type": [
+      "products",
+      "products"
+    ],
+    "object_id": "7",
+    "object_repr": "Sac artisanal",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\", \"Photo\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2026-10-22T14:31:43.891Z",
+    "user": [
+      "plug"
+    ],
+    "content_type": [
+      "products",
+      "products"
+    ],
+    "object_id": "3",
+    "object_repr": "Alimentaire artisanal",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\", \"Description\", \"Photo\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2026-10-22T14:33:32.546Z",
+    "user": [
+      "plug"
+    ],
+    "content_type": [
+      "products",
+      "products"
+    ],
+    "object_id": "3",
+    "object_repr": "Alimentaire artisanal",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Photo\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2026-10-22T14:34:32.598Z",
+    "user": [
+      "plug"
+    ],
+    "content_type": [
+      "products",
+      "products"
+    ],
+    "object_id": "5",
+    "object_repr": "Vase artisanal",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Photo\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2026-10-22T14:38:19.111Z",
+    "user": [
+      "plug"
+    ],
+    "content_type": [
+      "products",
+      "products"
+    ],
+    "object_id": "2",
+    "object_repr": "Vases artisanaux",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\", \"Description\", \"Photo\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2026-10-22T14:39:52.565Z",
+    "user": [
+      "plug"
+    ],
+    "content_type": [
+      "products",
+      "products"
+    ],
+    "object_id": "7",
+    "object_repr": "Sac",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2026-10-22T14:40:01.948Z",
+    "user": [
+      "plug"
+    ],
+    "content_type": [
+      "products",
+      "products"
+    ],
+    "object_id": "6",
+    "object_repr": "Chaussure",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2026-10-22T14:40:10.866Z",
+    "user": [
+      "plug"
+    ],
+    "content_type": [
+      "products",
+      "products"
+    ],
+    "object_id": "5",
+    "object_repr": "Vase",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2026-10-22T14:40:19.021Z",
+    "user": [
+      "plug"
+    ],
+    "content_type": [
+      "products",
+      "products"
+    ],
+    "object_id": "4",
+    "object_repr": "Panier",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2026-10-22T14:40:31.355Z",
+    "user": [
+      "plug"
+    ],
+    "content_type": [
+      "products",
+      "products"
+    ],
+    "object_id": "3",
+    "object_repr": "Alimentaire",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2026-10-22T14:40:41.838Z",
+    "user": [
+      "plug"
+    ],
+    "content_type": [
+      "products",
+      "products"
+    ],
+    "object_id": "2",
+    "object_repr": "Vases",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+}
+]
